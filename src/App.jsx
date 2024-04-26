@@ -1,9 +1,10 @@
 import ParentComponent from "./ParentComponent";
+import "./App.css"
 
 const App = () => {
   return (
-    <div>
-    <ParentComponent />
+    <div className="App">
+      <ParentComponent />
     </div>
   );
 };
