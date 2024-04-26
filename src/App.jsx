@@ -1,10 +1,9 @@
-import ParentComponent from "./ParentComponent";
-import "./App.css"
+import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
-      <ParentComponent />
+      <h1>UseImperativeHandle</h1>
     </div>
   );
 };
