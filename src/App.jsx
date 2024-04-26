@@ -1,9 +1,10 @@
+import ParentComponent2 from "./ParentComponent2";
 import "./App.css";
 
 const App = () => {
   return (
     <div className="App">
-      <h1>UseImperativeHandle</h1>
+      <ParentComponent2 />
     </div>
   );
 };
