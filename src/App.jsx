@@ -1,10 +1,10 @@
-import ParentComponent2 from "./ParentComponent2";
 import "./App.css";
+import ExampleUseRef from "./ExampleUseRef";
 
 const App = () => {
   return (
     <div className="App">
-      <ParentComponent2 />
+      <ExampleUseRef />
     </div>
   );
 };
