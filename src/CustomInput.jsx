@@ -1,24 +1,43 @@
-import { forwardRef, useImperativeHandle } from "react";
-// UseImperativeHandle is not need when we need to pass one ref directly to a single element
-// inside a component
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 
-// When multiple refs are need to be passed or/and a custom ref with custom methods is needed
-// to be made, only than useImperativeHandle hook should be used
+const CustomInput = ({ isOpen, onClose }, ref) => {
+  const closeRef = useRef();
+  const confirmRef = useRef();
+  const denyRef = useRef();
 
-// useImperativeHandle => Create a custom ref. Create a custom method
-
-const CustomInput = (props, ref) => {
   useImperativeHandle(
     ref,
     () => {
-      return { alertHi: () => alert("Hi") };
+      return {
+        focusCloseBtn: () => closeRef.current.innerText = "Just changed",
+        focusConfirmBtn: () => confirmRef.current.focus(),
+        focusDenyBtn: () => denyRef.current.focus(),
+      };
     },
     []
   );
 
+  if (!isOpen) return null;
+
   return (
-    <div>
-      <input {...props} ref={ref} />
+    <div >
+      <div>
+        <button ref={closeRef} onClick={onClose}>
+          &times;
+        </button>
+        <div>
+          <h1>Title</h1>
+        </div>
+      </div>
+      <div>Confirm your modal?</div>
+      <div>
+        <button ref={confirmRef} onClick={onClose}>
+          Yes
+        </button>
+        <button style={{border:"none"}} ref={denyRef} onClick={onClose}>
+          No
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,20 +1,23 @@
-import { useRef, useState } from "react";
+import { useState, useRef } from "react";
 import CustomInput from "./CustomInput";
 
 const App = () => {
-  const [value, setValue] = useState("red");
-  const inputRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const modalRef = useRef();
   return (
     <div>
-      <CustomInput
-        type="text"
-        name="valueElement"
-        id="valueElement"
-        value={value}
-        onChange={(e)=> setValue(e.target.value)}
-        ref={inputRef}
-      />
-      <button onClick={() => inputRef.current.alertHi()}>Submit</button>
+      <button onClick={() => setOpen(true)}>Open</button>
+      <button onClick={() => modalRef.current.focusCloseBtn()}>
+        Focus Close
+      </button>
+      <br />
+      <button onClick={() =>  modalRef.current.focusConfirmBtn()}>
+        Focus Confirm
+      </button>
+      <button onClick={() => modalRef.current.focusDenyBtn()}>
+        Focus Deny
+      </button>
+      <CustomInput ref={modalRef} isOpen={open} onClose={() => setOpen(false)}/>
     </div>
   );
 };
